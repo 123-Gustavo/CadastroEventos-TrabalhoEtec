@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroEventos_TrabalhoEtec.Resources.Views.EventoCadastrado"
+             Title="EventoCadastrado">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding nome}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            TextColor="{StaticResource Primary}"
+            FontSize="50"
+            />
+
+        <Frame Margin="10">
+            <StackLayout Orientation="Horizontal">
+
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Local do Evento"/>
+                    <Label Text="{Binding local}" TextColor="{StaticResource Primary}"/>
+                </HorizontalStackLayout>
+                    
+            
+            </StackLayout>
+        </Frame>
+
+        <Frame Margin="10">
+            <Grid ColumnDefinitions="*, *, *"  RowDefinitions="Auto, Auto">
+                <Label Grid.Row="0" Grid.Column="0" Text="Data de Inicio"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="Data do Término"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="Tempo Total"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="{Binding dataInicio, StringFormat='{}{0:dd/MM/yyyy'}" TextColor="{StaticResource Primary}"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding dataFim, StringFormat='{}{0:dd/MM/yyyy'}" TextColor="{StaticResource Primary}" />
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding CalcularDuracaoDias}" TextColor="{StaticResource Primary}"/>
+            </Grid>
+        </Frame>
+
+        <Frame Margin="10">
+            <StackLayout Orientation="Horizontal">
+
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Valor do Ingresso: "/>
+                    <Label Text="{Binding valorIngresso, StringFormat='{}{0:c'}" TextColor="{StaticResource Primary}"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Receita Total: "/>
+                    <Label Text="{Binding CalcularReceitaTotal, StringFormat='{}{0:c'}" TextColor="{StaticResource Primary}"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Frame>
+
+        <Button Text="Voltar" HorizontalOptions="Center" Clicked="Button_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>
